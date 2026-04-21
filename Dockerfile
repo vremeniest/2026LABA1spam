@@ -2,19 +2,22 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Установка зависимостей системы для OpenCV
+# Установка зависимостей системы
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
-    libglib2.0-0 \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY src/ ./src/
-COPY models/ ./models/
 COPY config.ini .
+COPY data/ ./data/
+
+# Создаём пустую папку для модели (она создастся при обучении)
+RUN mkdir -p models
 
 EXPOSE 8000
 
-CMD ["python", "src/api.py"]
+# Команда для запуска: сначала обучаем модель, потом API
+CMD python src/train.py && python src/api.py
