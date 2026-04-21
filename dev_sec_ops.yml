@@ -1,0 +1,30 @@
+# DevOps metadata for security and operations
+project:
+  name: 2026LABA1spam
+  version: 1.0.0
+
+last_5_commits:
+  - hash: "457c341"
+    date: "2026-04-21"
+    message: "fix: add pandas to requirements"
+  - hash: "154c4d6"
+    date: "2026-04-21"
+    message: "ci: add GitHub Actions pipeline"
+  - hash: "653c03f"
+    date: "2026-04-21"
+    message: "feat: track sms dataset with DVC"
+  - hash: "6bbbd4c"
+    date: "2026-04-21"
+    message: "Initial commit: SMS spam detection with API, tests, and ..."
+  - hash: "0c2a8f2"
+    date: "2026-04-20"
+    message: "chore: set up dvc"
+
+docker:
+  image: vremeniest/2026laba1spam:latest
+  sha: ""
+  size: ""
+
+tests:
+  coverage: "100%"
+  passed: true

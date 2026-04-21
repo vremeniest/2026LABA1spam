@@ -1,0 +1,42 @@
+{
+  "scenarios": [
+    {
+      "name": "health_check",
+      "description": "Test API health endpoint",
+      "endpoint": "/health",
+      "method": "GET",
+      "expected": {
+        "status": "healthy"
+      },
+      "timeout": 10
+    },
+    {
+      "name": "predict_ham",
+      "description": "Test ham message classification",
+      "endpoint": "/predict",
+      "method": "POST",
+      "body": {
+        "text": "Hello, how are you?"
+      },
+      "expected": {
+        "label": "ham",
+        "is_spam": false
+      },
+      "timeout": 30
+    },
+    {
+      "name": "predict_spam",
+      "description": "Test spam message classification",
+      "endpoint": "/predict",
+      "method": "POST",
+      "body": {
+        "text": "WINNER!! You won 1000$! Click here"
+      },
+      "expected": {
+        "label": "spam",
+        "is_spam": true
+      },
+      "timeout": 30
+    }
+  ]
+}
